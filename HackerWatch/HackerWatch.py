@@ -1,12 +1,12 @@
 from api import api
-import json
+import time, json
 
 hn = api()
 
 story_ids = hn.PullTopStories()
 
 for story_id in story_ids:
-    story = hn.PullStoryEntry(story_id)
+    story = hn.PullItem(story_id)
     if story == int(1):
         exit(1)
     else:
@@ -15,3 +15,4 @@ for story_id in story_ids:
         except UnicodeEncodeError, e:
             print("\n\n\n\nWe choked on the following story:\n")
             print story
+    time.sleep(1)
